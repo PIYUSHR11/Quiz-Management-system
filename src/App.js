@@ -1,9 +1,13 @@
+import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import {LoginPage, QuizTaker, PublicQuizList }
+import './App.css';
+
 const App = () => {
     // Simple state management for routing
     const [currentPage, setCurrentPage] = useState('home'); // 'home', 'login', 'admin', 'createQuiz', 'takeQuiz'
     const [quizId, setQuizId] = useState(null); // ID of the quiz being taken
-    // auth now stores the token as well
-    const [auth, setAuth] = useState(null); // { id: 'u1', role: 'admin', email: 'admin@app.com', token: '...' }
+    const [auth, setAuth] = useState(null); // { id: 'u1', role: 'admin', email: 'admin@app.com' }
     const [quizzes, setQuizzes] = useState([]);
 
     const fetchAllQuizzes = useCallback(async () => {
@@ -30,12 +34,7 @@ const App = () => {
 
     if (auth?.role === 'admin') {
         if (currentPage === 'createQuiz') {
-            // Passing the authToken is essential for the QuizCreator to make an authenticated request
-            content = <QuizCreator 
-                setCurrentPage={handleSetCurrentPage} 
-                reloadQuizzes={fetchAllQuizzes} 
-                authToken={auth.token} 
-            />;
+            content = <QuizCreator setCurrentPage={handleSetCurrentPage} reloadQuizzes={fetchAllQuizzes} />;
         } else {
             content = <AdminDashboard setAuth={setAuth} setCurrentPage={handleSetCurrentPage} auth={auth} quizzes={quizzes} />;
         }

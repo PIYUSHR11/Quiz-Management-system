@@ -13,7 +13,7 @@
 //app.use(express.json());
 //
 //// --- MongoDB Connection ---
-//const MONGODB_URI = 'mongodb+srv://piyushrajeshinde_db_user:Q9HaIf0cstc0AXi8@cluster0.enltyrh.mongodb.net/?appName=Cluster0';
+//const MONGODB_URI = 'mongodb+srv://piyushrajeshinde_db_user:<password>@cluster0.enltyrh.mongodb.net/?appName=Cluster0';
 //mongoose.connect(MONGODB_URI)
 //    .then(() => console.log('MongoDB connected successfully.'))
 //    .catch(err => console.error('MongoDB connection error:', err));
